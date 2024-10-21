@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from tqdm import tqdm
 
-base_url = "kupidonia.ruspisok/spisok-suschestvitelnyh-russkogo-jazyka/bukva"
+base_url = "https://kupidonia.ru/spisok/spisok-suschestvitelnyh-russkogo-jazyka/bukva"
 
 letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ"
 all_nouns = []
@@ -18,12 +18,12 @@ for letter in tqdm(letters):
                 columns = row.find_all('td')
                 for column in columns:
                     noun = column.text.strip()
-                    if noun and len(noun) > 5:
+                    if noun and len(noun) > 5 and "-" not in noun:
                         all_nouns.append(noun)
 
 print(len(all_nouns))
 
 
-with open("./data/words.txt", "w", encoding="utf-8") as file:
+with open("../data/words.txt", "w", encoding="utf-8") as file:
     for noun in all_nouns:
         file.write(noun + "\n")
