@@ -1,5 +1,5 @@
 import random
-from const import HANGMAN_PICS
+from app.const import HANGMAN_PICS
 
 
 class Hangman:
@@ -9,7 +9,7 @@ class Hangman:
 
     @staticmethod
     def _load_corpus():
-        with open("words.txt", "r", encoding="utf-8") as f:
+        with open("./data/words.txt", "r", encoding="utf-8") as f:
             words = f.read().strip().split("\n")
             return words
 

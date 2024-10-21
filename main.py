@@ -1,5 +1,5 @@
-from const import START_TEXT
-from hangman import Hangman
+from app.const import START_TEXT
+from app.hangman import Hangman
 
 
 if __name__ == "__main__":
